@@ -82,13 +82,50 @@ public class CPSC112_Assignment3 {
 				}
 		} 
 
-
-		} 
  
 
  public static boolean isGameOver(String input) {
     // Parts 3 and 4 code goes here
-	
+	 boolean endGameGuess = true;
+	 if (isGuessValid(input)==false){
+		 return false;
+	 }
+		
+		 int numCorrect = 0; 
+		 if (secretNumber1 == a || secretNumber1 == b || secretNumber1 == c || secretNumber1 == d){
+			 numCorrect = numCorrect + 1; 
+		 }
+		 if (secretNumber2 == a || secretNumber2 == b || secretNumber2 == c || secretNumber2 == d){
+			 numCorrect += 1; 
+		 }
+		 if (secretNumber3 == a || secretNumber3 == b || secretNumber3 == c || secretNumber3 == d){
+			 numCorrect += 1; 
+		 }
+		 if (secretNumber4 == a || secretNumber4 == b || secretNumber4 == c || secretNumber4 == d){
+			 numCorrect += 1; 
+		 }
+
+		 int placeCorrect = 0; 
+		 if (secretNumber1 == a){
+			 placeCorrect += 1; 
+		 }
+		 if (secretNumber2 == b){
+			 placeCorrect += 1; 
+		 }
+		 if (secretNumber3 == c){
+			 placeCorrect += 1; 
+		 }
+		 if (secretNumber4 == d){
+			 placeCorrect += 1; 
+		 }
+			
+			 if (numCorrect == 4 && placeCorrect == 4){
+				 System.out.println("You won!");
+				 return true;
+			 }
+			 System.out.println("Guess: " + input + "; Result: " + numCorrect + "," + placeCorrect);
+		 return false; 
+
   }
   
 
