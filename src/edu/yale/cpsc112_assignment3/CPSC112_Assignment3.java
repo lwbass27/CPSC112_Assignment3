@@ -15,6 +15,10 @@ public class CPSC112_Assignment3 {
   public static int b;
   public static int c; 
   public static int d;
+  public static int highestNum = 0;
+  public static int numExceptions = 3;
+  public static int truth = 1;
+
 
 
   public static void main(String[] args) {
@@ -90,6 +94,23 @@ public class CPSC112_Assignment3 {
 	 if (isGuessValid(input)==false){
 		 return false;
 	 }
+	 
+	 
+		int intGuess = Integer.parseInt(input); 
+		int theSecret = Integer.parseInt(mySecret);
+		if (intGuess > highestNum){
+			highestNum = intGuess; 
+		}
+		if (intGuess < highestNum && intGuess != theSecret){ 
+			if (numExceptions >0){
+				numExceptions = numExceptions -1; 
+			} 
+			System.out.println("Your guess was lower than allowed. You have " + numExceptions + " exceptions remaining.");
+			 if (numExceptions == 0 && intGuess > theSecret){
+				 System.out.println("You're out of exceptions and you've guessed to high! The secret was " + mySecret);
+				 return true;
+			 }
+		}
 		
 		 int numCorrect = 0; 
 		 if (secretNumber1 == a || secretNumber1 == b || secretNumber1 == c || secretNumber1 == d){
@@ -118,12 +139,43 @@ public class CPSC112_Assignment3 {
 		 if (secretNumber4 == d){
 			 placeCorrect += 1; 
 		 }
-			
+	
+		if (truth == 1){
+			 int lie = r.nextInt(3); 
+			 if (lie == 2){
+				 truth *= -1; 
+			int firstDigit; 
+			int digit = r.nextInt(2);
+			if (digit == 0){
+				Random q = new Random();
+				firstDigit = q.nextInt(5);
+				while (firstDigit == numCorrect || numCorrect < placeCorrect){
+					firstDigit = q.nextInt(5);
+				}
+				if (numCorrect == 4 && placeCorrect == 3){
+					digit = 1; 
+				}  else {
+					numCorrect = firstDigit;
+				}
+			}
+			if (digit == 1){
+				Random p = new Random();
+				int secondDigit = p.nextInt(4);
+				while (secondDigit == placeCorrect || secondDigit > numCorrect){
+					secondDigit = p.nextInt(4);
+					if (numCorrect == 4 && secondDigit == 3){
+						secondDigit = p.nextInt(3);
+					}
+				}	
+				placeCorrect = secondDigit;
+			}
+			}
 			 if (numCorrect == 4 && placeCorrect == 4){
 				 System.out.println("You won!");
 				 return true;
 			 }
 			 System.out.println("Guess: " + input + "; Result: " + numCorrect + "," + placeCorrect);
+		}
 		 return false; 
 
   }
