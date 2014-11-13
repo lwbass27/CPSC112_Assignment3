@@ -11,6 +11,10 @@ public class CPSC112_Assignment3 {
   public static int secretNumber2;
   public static int secretNumber3; 
   public static int secretNumber4;
+  public static int a;
+  public static int b;
+  public static int c; 
+  public static int d;
 
 
   public static void main(String[] args) {
@@ -48,6 +52,36 @@ public class CPSC112_Assignment3 {
   
   public static boolean isGuessValid(String input) {
     // Part 2 code goes here
+	  boolean invalidGuess = true; 
+		try {
+			a = Integer.parseInt(input.substring(0,1));
+			b = Integer.parseInt(input.substring(1,2));
+			c = Integer.parseInt(input.substring(2,3));
+			d = Integer.parseInt(input.substring(3,4));		
+				if (a <=0 || a >= 8){
+					invalidGuess = false;
+					System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+				}
+				if (b <=0 || b >= 8 || b==a){
+					invalidGuess = false;
+					System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+				}
+				if (c <=0 || c >= 8 || c==b || c==a){
+					invalidGuess = false;
+					System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+				}
+				if (d <=0 || d >= 8 || d==c || d==b || d==a){
+					invalidGuess = false;
+					System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+				}
+			return invalidGuess;
+		}
+				
+		catch (Exception e){
+				return false;
+				}
+		} 
+
 
 		} 
  
